@@ -83,6 +83,7 @@ textarea {
   margin-bottom: 28px;
 }
 
+/* Header and navigation */
 .site-header {
   position: sticky;
   top: 0;
@@ -160,32 +161,36 @@ textarea {
 }
 
 /* Home hero background slider
+   IMPORTANT:
+   background-size is set to CONTAIN so the whole picture is visible.
+   This prevents cropping of the top, bottom, or sides.
    Recommended image size: 1600px x 900px or 1920px x 1080px.
-   Keep each image below about 500 KB where possible.
 */
 .hero {
   position: relative;
-  min-height: 82vh;
+  min-height: 88vh;
   display: flex;
   align-items: center;
   color: var(--white);
   overflow: hidden;
+  background: #102018;
 }
 
 .hero-bg {
   position: absolute;
   inset: 0;
   background-position: center top;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-color: #102018;
   opacity: 0;
   transform: scale(1);
-  transition: opacity 1.3s ease-in-out, transform 10s ease;
+  transition: opacity 1.3s ease-in-out;
 }
 
 .hero-bg.active {
   opacity: 1;
-  transform: scale(1.02);
+  transform: scale(1);
 }
 
 .bg-1 {
@@ -204,7 +209,7 @@ textarea {
   background-image: url("../images/pics4.jpg");
 }
 
-/* Dark overlay keeps the text readable while still showing the photos clearly */
+/* Dark overlay keeps words readable without hiding the picture completely */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -212,11 +217,11 @@ textarea {
   background:
     linear-gradient(
       90deg,
-      rgba(10, 23, 15, 0.86) 0%,
-      rgba(10, 23, 15, 0.66) 48%,
-      rgba(10, 23, 15, 0.32) 100%
+      rgba(10, 23, 15, 0.78) 0%,
+      rgba(10, 23, 15, 0.55) 45%,
+      rgba(10, 23, 15, 0.22) 100%
     ),
-    linear-gradient(180deg, rgba(0, 0, 0, 0.24), rgba(0, 0, 0, 0.40));
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.34));
 }
 
 .hero-content {
@@ -242,15 +247,15 @@ textarea {
   line-height: 1.08;
   margin-bottom: 18px;
   max-width: 760px;
-  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.55);
 }
 
 .lead {
   font-size: 1.08rem;
   max-width: 720px;
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(255, 255, 255, 0.96);
   margin-bottom: 26px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
 }
 
 .hero-actions {
@@ -346,14 +351,16 @@ textarea {
   margin-bottom: 8px;
 }
 
+/* Inner page heroes
+   These also use CONTAIN so the top part is visible. */
 .page-hero {
-  min-height: 320px;
+  min-height: 360px;
   display: flex;
   align-items: center;
   color: #ffffff;
   background:
-    linear-gradient(90deg, rgba(10, 23, 15, 0.88), rgba(10, 23, 15, 0.54)),
-    url("../images/pics1.jpg") center top / cover no-repeat;
+    linear-gradient(90deg, rgba(10, 23, 15, 0.82), rgba(10, 23, 15, 0.48)),
+    url("../images/pics1.jpg") center top / contain no-repeat #102018;
 }
 
 .page-hero p {
@@ -363,26 +370,32 @@ textarea {
 
 .page-hero-services {
   background-image:
-    linear-gradient(90deg, rgba(10, 23, 15, 0.88), rgba(10, 23, 15, 0.54)),
+    linear-gradient(90deg, rgba(10, 23, 15, 0.82), rgba(10, 23, 15, 0.48)),
     url("../images/pics2.jpg");
   background-position: center top;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #102018;
 }
 
 .page-hero-gallery {
   background-image:
-    linear-gradient(90deg, rgba(10, 23, 15, 0.88), rgba(10, 23, 15, 0.54)),
+    linear-gradient(90deg, rgba(10, 23, 15, 0.82), rgba(10, 23, 15, 0.48)),
     url("../images/pics3.jpg");
   background-position: center top;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #102018;
 }
 
 .page-hero-videos {
   background-image:
-    linear-gradient(90deg, rgba(10, 23, 15, 0.88), rgba(10, 23, 15, 0.54)),
+    linear-gradient(90deg, rgba(10, 23, 15, 0.82), rgba(10, 23, 15, 0.48)),
     url("../images/pics4.jpg");
   background-position: center top;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #102018;
 }
 
 .two-col {
@@ -654,6 +667,7 @@ thead th {
   transform: translateY(0);
 }
 
+/* Tablet layout */
 @media (max-width: 1024px) {
   .hero-content,
   .two-col,
@@ -672,14 +686,16 @@ thead th {
   }
 
   .hero {
-    min-height: 78vh;
+    min-height: 84vh;
   }
 
   .hero-bg {
     background-position: center top;
+    background-size: contain;
   }
 }
 
+/* Mobile layout */
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -720,12 +736,13 @@ thead th {
   }
 
   .hero {
-    min-height: 72vh;
+    min-height: 82vh;
   }
 
   .hero-bg {
     background-position: center top;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .hero-content {
@@ -748,9 +765,15 @@ thead th {
   }
 }
 
+/* Extra small phones */
 @media (max-width: 480px) {
   .hero {
-    min-height: 68vh;
+    min-height: 78vh;
+  }
+
+  .hero-bg {
+    background-position: center top;
+    background-size: contain;
   }
 
   .hero h1 {
